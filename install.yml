@@ -1,7 +1,5 @@
 .:
   <src>:
-    .zshenv: zshenv
-    .zsh.d: zsh
     .bash_profile: bash_profile
     .bashrc: bashrc
     .bash.d: bash
