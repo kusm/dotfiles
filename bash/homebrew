@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+# -*- mode: sh; coding: utf-8; indent-tabs-mode: nil -*-
+#
+# Copyright(C) Youhei SASAKI <uwabami@gfd-dennou.org> All rights reserved.
+# $Lastupdate: 2014-05-13 15:17:29$
+# License: CC0 or MIT/X11 @see LICENSE in detail
+#
+# Code:
+#
+export HOMEBREW_BREWFILE=~/.brewfile
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"

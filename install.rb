@@ -1,15 +1,12 @@
 #!/usr/bin/env ruby
 # -*- mode: ruby; coding: utf-8; indent-tabs-mode: nil -*-
 #
-# @see https://github.com/tarao/dotfiles/blob/master/install
-#
 require 'yaml'
 require 'fileutils'
 
 $argv = {}; arg=nil
 
 $argv[:help] = %w'-h --help'.any?{|x| $*.delete(x)}
-$argv[:pull] = !%w'--no-pull'.any?{|x| $*.delete(x)}
 $argv[:uninstall] = %w'-u --uninstall'.any?{|x| $*.delete(x)}
 $argv[:verbose] = %w'-v --verbose'.any?{|x| $*.delete(x)}
 $argv[:silent] = %w'-s --silent'.any?{|x| $*.delete(x)}
@@ -28,7 +25,6 @@ if $argv[:help]
   print <<"EOM"
 Usage: #{$0} [OPTIONS]
 Options:
-  --no-pull        Suppress pull action. (#{!$argv[:pull]})
   -u, --uninstall  Remove generated links. (#{$argv[:uninstall]})
   -v, --verbose    Verbose messages. (#{$argv[:verbose]})
   -s, --silent     Supress messages. (#{$argv[:silent]})
@@ -180,19 +176,6 @@ end.any?{|x| exit(1) if x===nil}
 Linker.from_files($argv[:src], $argv[:conf]).unlink($argv[:dir])
 
 exit if $argv[:uninstall]
-
-# pull
-if $argv[:pull]
-  $info.puts('')
-  Dir.chdir($argv[:src]) do
-    $info.puts('pull')
-    try do
-      submod = %w'sync init update'.map{|x|'git submodule '+x}.join(' && ')
-      $info.puts(`git pull && #{submod}`)
-    end unless $info.test?
-  end
-  $info.puts('')
-end
 
 # new links
 Linker.from_files($argv[:src], $argv[:conf]).link($argv[:dir])
