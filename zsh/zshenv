@@ -1,0 +1,29 @@
+#! /usr/bin/env zsh
+# -*- mode: sh; coding: utf-8; indent-tabs-mode: nil -*-
+#
+# Copyright(C) Youhei SASAKI <uwabami@gfd-dennou.org> All rights reserved.
+# $Lastupdate: 2014-05-13 12:41:14$
+# License: CC0 or MIT/X11 @see LICENSE in detail
+
+### PATH
+path=(
+    # Solaris
+    /opt/{csw,sfw}/bin(N-/)
+     # Linux, Mac OS X with homebrew
+    {/usr/local,/usr,}{/sbin,/bin}(N-/)
+    {/usr/local,/usr}/games(N-)
+    $path
+)
+
+## function: auto-zcompile & source
+function _auto_zcompile_source  () {
+    local A; A=$1
+    [[ -e "${A:r}.zwc" ]] && [[ "$A" -ot "${A:r}.zwc" ]] ||
+    zcompile $A >/dev/null 2>&1 ; source $A
+}
+
+### global proxy settings
+_auto_zcompile_source $ZDOTDIR/proxy
+
+### duplicate cleaning
+typeset -gxU path
