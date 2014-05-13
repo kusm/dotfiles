@@ -2,7 +2,7 @@
 # -*- mode: sh; coding: utf-8; indent-tabs-mode: nil -*-
 #
 # Copyright(C) Youhei SASAKI <uwabami@gfd-dennou.org> All rights reserved.
-# $Lastupdate: 2013-09-28 01:56:34$
+# $Lastupdate: 2014-05-13 15:42:19$
 # License: CC0 or MIT/X11 @see LICENSE in detail
 #
 # Code:
@@ -10,9 +10,10 @@
 ## for "VCS proxy" wrapper variables
 export _http_proxy_server_=proxy.kuins.net
 export _http_proxy_port_=8080
+export _no_proxy_='.local,.localhost,127.0.0.1'
 
 ## main proxy settings
 export http_proxy="http://$_http_proxy_server_:$_http_proxy_port_"
 export https_proxy="http://$_http_proxy_server_:$_http_proxy_port_"
+export no_proxy=$_no_proxy
 export ftp_proxy=$http_proxy
-
