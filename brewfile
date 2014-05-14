@@ -8,9 +8,6 @@ brew screen
 tap rcmdnk/brewall
 brew brewall
 
-tap kusm/kusm
-brew kusm
-
 # Homebrew packages
 install ghostscript
 install imagemagick
@@ -18,7 +15,7 @@ install nkf
 install wget
 
 # Cask Applications
-cask install mactex
+cask install basictex
 cask install texshop
 cask install appcleaner
 cask install cyberduck

@@ -1,8 +1,8 @@
 dotfiles
 ========
 
-Basic bash settings for Department of Mathematics, Kyoto University
-
+Basic bash settings for Mac OS X, in Department of Mathematics, Kyoto
+University. Use at your own risk!
 
 Usage
 -----
