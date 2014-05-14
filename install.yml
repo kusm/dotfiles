@@ -5,5 +5,4 @@
     .bash.d: bash
     .wgetrc: wgetrc
     .brewfile: brewfile
-Library:
-  bin: bin
+    Library/bin: bin
