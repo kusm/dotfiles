@@ -7,4 +7,4 @@
 #
 # Code:
 #
-[ ! -d ${HOME}/Library/bin ] || export PATH=${HOME}/Library/bin:$PATH
+[ ! -L ${HOME}/Library/bin ] || export PATH=${HOME}/Library/bin:$PATH
