@@ -217,5 +217,5 @@ echo "Setup Ghostscript font config"
 setupgsfont $GSRESDIR
 echo "mktexlsr"
 mktexlsr
-echo "kanji-config-updmap-sys hiragino"
-kanji-config-updmap-sys hiragino
+echo "updmap-sys --setoption kanjiEmbed hiragino"
+updmap-sys --setoption kanjiEmbed hiragino
