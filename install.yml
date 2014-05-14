@@ -5,7 +5,5 @@
     .bash.d: bash
     .wgetrc: wgetrc
     .brewfile: brewfile
-Library/bin:
-  bin:
-    fix_homebrew_permission_for_multiuser: fix_homebrew_permssion_for_multiuser
-    set_MacTeX_for_Japanese: set_MacTeX_for_Japanese
+Library:
+  bin: bin
