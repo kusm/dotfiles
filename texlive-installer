@@ -63,17 +63,8 @@ if [ $1 ]; then
     exit 0
 fi
 
-result=$(which kpsewhich 2>&1 1>/dev/null)
-if [ ! $result -eq 0 ]; then
-    echo "Install basictex: brew cask install basictex"
-    exit 1
-fi
-
-result=$(which wget 2>&1 1>/dev/null)
-if [ ! $result -eq 0 ]; then
-    echo "Install wget: brew install wget"
-    exit 1
-fi
+export PATH=/usr/texbin:$PATH
+sudo fix_homebrew_permssion_for_multiuser.sh
 
 TEXMFLOCAL=`kpsewhich -var-value=TEXMFLOCAL`
 mktlmgrconf(){
@@ -90,5 +81,23 @@ echo "Create tlmgr/config"
 mktlmgrconf $TEXMFLOCAL
 
 tlmgr option repository http://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/tlnet/
-tlmgr update --self
-tlmgr install
+tlmgr update --self --no-persistent-downloads
+tlmgr install collection-basic --no-persistent-downloads
+tlmgr install collection-latex --no-persistent-downloads
+tlmgr install collection-latexrecommended --no-persistent-downloads
+tlmgr install collection-latexrextra --no-persistent-downloads
+tlmgr install collection-metapost --no-persistent-downloads
+tlmgr install collection-mathextra --no-persistent-downloads
+tlmgr install collection-luatex --no-persistent-downloads
+tlmgr install collection-langcjk --no-persistent-downloads
+tlmgr install collection-pictures --no-persistent-downloads
+tlmgr install collection-pstricks --no-persistent-downloads
+tlmgr install collection-science --no-persistent-downloads
+tlmgr install collection-xetex --no-persistent-downloads
+tlmgr install collection-fontsextra --no-persistent-downloads
+tlmgr install collection-bibtexextra --no-persistent-downloads
+tlmgr install collection-publishers --no-persistent-downloads
+tlmgr install latexmk lacheck --no-persistent-downloads
+
+
+
