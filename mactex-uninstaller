@@ -85,7 +85,7 @@ for (( I=0; I < ${#PKGS[@]}; ++I)) ; do
 	for f in `pkgutil --files ${PKGS[$I]}` ; do
 	    if [ -f $f ] ; then
 	        echo rm -fr ${FILE_PATH}/"$f"
-	        # sudo rm -fr ${FILE_PATH}/"$f"
+	        sudo rm -fr ${FILE_PATH}/"$f"
 	    fi
 	done
 	sudo pkgutil --forget ${PKGS[$I]}
