@@ -8,6 +8,9 @@ brew screen
 tap rcmdnk/brewall
 brew brewall
 
+tap kusm/kusm
+brew kusm
+
 # Homebrew packages
 install ghostscript
 install imagemagick
