@@ -61,33 +61,35 @@ if [ $1 ]; then
     exit 0
 fi
 
-PKGS=(com.tug.mactex.gui2013
-org.tug.mactex.basictex2013
-org.tug.mactex.fixmactex2013
-org.tug.mactex.ghostscript9.05
-org.tug.mactex.ghostscript9.07
-org.tug.mactex.gui
-org.tug.mactex.imagemagick-convert-6.7.6-9
-org.tug.mactex.imagemagick-convert-6.8.3-3
-org.tug.mactex.texlive2012
+PKGS=(com.tug.mactex.gui2013 \
+org.tug.mactex.basictex2013 \
+org.tug.mactex.fixmactex2013 \
+org.tug.mactex.ghostscript9.05 \
+org.tug.mactex.ghostscript9.07 \
+org.tug.mactex.gui \
+org.tug.mactex.imagemagick-convert-6.7.6-9 \
+org.tug.mactex.imagemagick-convert-6.8.3-3 \
+org.tug.mactex.texlive2012 
 )
-
 OLD_IFS=$IFS
 
 export IFS='
 '
-for (( I=0; I<${#PKGS[@]}; ++I)) ; do
-    VOLUMNE=`pkgutil --info ${PKGS[$I]} | grep volume | awk '{print $2}'`
-    LOCATION=`pkgutil --info ${PKGS[$I]} | grep location | awk '{print $2}'`
-    FILE_PATH=${VOLUMNE}${LOCATION}
-
-    for f in `pkgutil --files ${PKGS[$I]}` ; do
-        if [ -f $f ] ; then
+for (( I=0; I < ${#PKGS[@]}; ++I)) ; do
+    PKG=${PKGS[$I]}
+    if [ ! -z `pkgutil --pkgs | grep $PKG` ] ;then
+	echo "uninstall $PKG"
+	VOLUMNE=`pkgutil --info ${PKGS[$I]} | grep volume | awk '{print $2}'`
+	LOCATION=`pkgutil --info ${PKGS[$I]} | grep location | awk '{print $2}'`
+	FILE_PATH=${VOLUMNE}${LOCATION}
+	for f in `pkgutil --files ${PKGS[$I]}` ; do
+	    if [ -f $f ] ; then
 	        echo rm -fr ${FILE_PATH}/"$f"
-	        sudo rm -fr ${FILE_PATH}/"$f"
-        fi
-    done
-    sudo pkgutil --forget ${PKGS[$I]}
+	        # sudo rm -fr ${FILE_PATH}/"$f"
+	    fi
+	done
+	sudo pkgutil --forget ${PKGS[$I]}
+    fi
 done
 
 export IFS=$OLD_IFS
