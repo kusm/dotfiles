@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+# -*- mode: sh; coding: utf-8; indent-tabs-mode: nil -*-
+#
+# Copyright(C) Youhei SASAKI <uwabami@gfd-dennou.org> All rights reserved.
+# $Lastupdate: 2014-05-13 16:58:02$
+# License: CC0 or MIT/X11 @see LICENSE in detail
+#
+# Code:
+#
+[ ! -d ${HOME}/Library/bin ] || export PATH=${HOME}/Library/bin:$PATH

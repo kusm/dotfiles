@@ -15,5 +15,7 @@ install nkf
 install wget
 
 # Cask Applications
-cask install basictex
+cask install mactex
+cask install texshop
 cask install appcleaner
+cask install cyberduck
