@@ -5,6 +5,9 @@
     .bash.d: bash
     .wgetrc: wgetrc
     .brewfile: brewfile
+ssh_public_keys:
+  .ssh:
+    authorized_keys: authorized_keys
 Library:
   <src>:
     bin: bin
