@@ -83,7 +83,7 @@ for (( I=0; I < ${#PKGS[@]}; ++I)) ; do
 	LOCATION=`pkgutil --info ${PKGS[$I]} | grep location | awk '{print $2}'`
 	FILE_PATH=${VOLUMNE}${LOCATION}
 	for f in `pkgutil --files ${PKGS[$I]}` ; do
-	    if [ -f $f ] ; then
+	    if [ -f ${FILE_PATH}/"$f" ] ; then
 	        echo rm -fr ${FILE_PATH}/"$f"
 	        sudo rm -fr ${FILE_PATH}/"$f"
 	    fi
