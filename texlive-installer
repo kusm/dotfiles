@@ -89,7 +89,7 @@ tlmgr install collection-latexrextra --no-persistent-downloads
 tlmgr install collection-metapost --no-persistent-downloads
 tlmgr install collection-mathextra --no-persistent-downloads
 tlmgr install collection-luatex --no-persistent-downloads
-tlmgr install collection-langcjk --no-persistent-downloads
+tlmgr install collection-langjapanese --no-persistent-downloads
 tlmgr install collection-pictures --no-persistent-downloads
 tlmgr install collection-pstricks --no-persistent-downloads
 tlmgr install collection-science --no-persistent-downloads
