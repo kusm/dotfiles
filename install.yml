@@ -4,7 +4,6 @@
     .bashrc: bashrc
     .bash.d: bash
     .wgetrc: wgetrc
-    .brewfile: brewfile
 Library:
   <src>:
     bin: bin
