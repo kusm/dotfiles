@@ -69,7 +69,7 @@ org.tug.mactex.ghostscript9.07 \
 org.tug.mactex.gui \
 org.tug.mactex.imagemagick-convert-6.7.6-9 \
 org.tug.mactex.imagemagick-convert-6.8.3-3 \
-org.tug.mactex.texlive2012 
+org.tug.mactex.texlive2012
 )
 OLD_IFS=$IFS
 
