@@ -8,3 +8,4 @@
 # Code:
 #
 [ ! -L ${HOME}/Library/bin ] || export PATH=${HOME}/Library/bin:$PATH
+[ ! -L /usr/texbin ] || export PATH=/usr/texbin:$PATH
