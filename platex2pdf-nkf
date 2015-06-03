@@ -1,0 +1,20 @@
+#!/bin/sh
+SRC=$@
+GUESS=`nkf -g $SRC`
+case $GUESS in
+    E*|e*)
+	KANJI=euc
+	;;
+    S*|s*)
+	KANJI=sjis
+	;;
+    I*|i*)
+	KANJI=jis
+	;;
+    *)
+	KANJI=utf8
+	;;
+esac
+echo "ptex2pdf -l -e -ot '-kanji=$KANJI' $@"
+ptex2pdf -l -e -ot "'-kanji=$KANJI'" $@
+	
