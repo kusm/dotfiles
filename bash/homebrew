@@ -7,5 +7,4 @@
 #
 # Code:
 #
-export HOMEBREW_BREWFILE=~/.brewfile
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
