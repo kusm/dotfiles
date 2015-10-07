@@ -20,7 +20,7 @@ filelist.uniq.sort.each do |f|
   if FileTest::directory?(f)
     p "File::chmod(0700, #{f})" if debug
     File::chmod(0700, f)
-  elsif f =~ /\.rb$|\.awk$|\.sh$/
+  elsif f =~ /\.rb$|\.awk$|\.sh$|-nkf$/
     p "File::chmod(0700, #{f})" if debug
     File::chmod(0700, f)
   else
