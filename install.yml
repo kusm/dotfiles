@@ -4,6 +4,7 @@
     .bashrc: bashrc
     .bash.d: bash
     .wgetrc: wgetrc
+    .ssh: ssh
 Library:
   <src>:
     bin: bin
