@@ -63,7 +63,6 @@ if [ $1 ]; then
     exit 0
 fi
 
-export PATH=/usr/texbin:$PATH
 sudo fix_homebrew_permssion_for_multiuser.sh
 
 TEXMFLOCAL=`kpsewhich -var-value=TEXMFLOCAL`
@@ -81,7 +80,7 @@ echo "Create tlmgr/config"
 mktlmgrconf $TEXMFLOCAL
 
 tlmgr option repository http://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/tlnet/
-tlmgr update --self --no-persistent-downloads
+tlmgr update --self --all --no-persistent-downloads
 tlmgr install collection-basic --no-persistent-downloads
 tlmgr install collection-latex --no-persistent-downloads
 tlmgr install collection-latexrecommended --no-persistent-downloads

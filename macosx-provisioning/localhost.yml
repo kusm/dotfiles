@@ -1,60 +1,16 @@
 - hosts: localhost
   connection: local
-  gather_facts: no
-  sudo: no
-  vars:
-    homebrew_taps:
-      - homebrew/dupes
-      - caskroom/cask
-    homebrew_packages:
-      - { name: nkf }
-      - { name: wget }
-      - { name: brew-cask }
-      - { name: imagemagick }
-      - { name: ghostscript }
-    homebrew_cask_packages:
-      - { name: firefox-ja }
-      - { name: basictex }
-      - { name: texshop }
-      - { name: latexit }
   tasks:
-    - name: create result dir "brew_info"
-      file: path=brew_info state=directory
-
     - name: update homebrew
       homebrew: update_homebrew=yes
 
-    - name: enable homebrew taps
-      homebrew_tap: tap={{ item }} state=present
-      with_items: homebrew_taps
-
-    - name: enable homebrew-versions tap
-      shell: brew tap caskroom/homebrew-versions
-
     - name: install homebrew packages
-      homebrew: >
-        name={{ item.name }}
-        state={{ item.state | default('latest') }}
-        install_options={{
-          item.install_options | default () | join(',')
-          if item.install_options is not string
-          else item.install_options
-        }}
-      with_items: homebrew_packages
-      register: brew_result
-
-    - name: save homebrew install result
-      shell: brew info {{ item }} > brew_info/{{ item }}
-      with_items: brew_result.results | selectattr('changed') | map(attribute='item') | map(attribute='name') | list
-
-    - name: install cask packages
-      homebrew_cask: name={{ item.name }} state={{ item.state|default('installed') }}
-      with_items: homebrew_cask_packages
-      register: cask_result
-
-    - name: save homebrew install result
-      shell: brew cask info {{ item }} > brew_info/{{ item }}
-      with_items: cask_result.results | selectattr('changed') | map(attribute='item') | map(attribute='name') | list
-
-    - name: install tex packages using tlmgr
-      shell: sudo ~/Library/bin/texlive-installer.sh
+      homebrew: name="{{ item }}" state=latest
+      with_items:
+        - nkf
+        - wget
+        - imagemagick
+        - ghostscript
+        - lv
+        - ag
+        - gnupg2
